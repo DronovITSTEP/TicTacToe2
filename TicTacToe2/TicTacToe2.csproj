@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Image\diez.png" />
+    <None Remove="Image\krest.png" />
+    <None Remove="Image\line_horizontal.png" />
+    <None Remove="Image\line_left_right.png" />
+    <None Remove="Image\line_right_left.png" />
+    <None Remove="Image\line_vertical.png" />
+    <None Remove="Image\nol.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\diez.png" />
+    <Resource Include="Image\krest.png" />
+    <Resource Include="Image\line_horizontal.png" />
+    <Resource Include="Image\line_left_right.png" />
+    <Resource Include="Image\line_right_left.png" />
+    <Resource Include="Image\line_vertical.png" />
+    <Resource Include="Image\nol.png" />
+  </ItemGroup>
+
+</Project>

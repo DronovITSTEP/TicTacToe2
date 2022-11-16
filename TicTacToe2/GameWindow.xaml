@@ -14,24 +14,56 @@
         <Image x:Key="Image.LineRL" Source="/Image/line_right_left.png"/>
         <Image x:Key="Image.LineHor" Source="/Image/line_horizontal.png"/>
         <Image x:Key="Image.LineVer" Source="/Image/line_vertical.png"/>
+
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Button Margin="10,10">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF3FAAF4"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#00000000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </ControlTemplate>
     </Window.Resources>
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF2121E5"/>
-                <GradientStop Color="#FF2B9AE3" Offset="1"/>
+                <GradientStop Color="#FF2424DD"/>
+                <GradientStop Color="#FF358FCB" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <Label Grid.Column="0" Grid.Row="0" Content="Player:" FontFamily="Broadway" FontSize="36" FontWeight="Bold" Margin="10,10"/>
+        <Label Grid.Column="1" Grid.Row="0" Content="Computer:" FontFamily="Broadway" FontSize="36" FontWeight="Bold" Margin="10,10"/>
+        <Label x:Name="CountPl" Grid.Column="0" Grid.Row="1" Content="0" FontFamily="Broadway" FontSize="36" FontWeight="Bold" Margin="10,10"/>
+        <Label x:Name="CountComp" Grid.Column="1" Grid.Row="1" Content="0" FontFamily="Broadway" FontSize="36" FontWeight="Bold" Margin="10,10"/>
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.Background>
                 <ImageBrush ImageSource="/Image/diez.png"/>
             </Grid.Background>
@@ -45,39 +77,16 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="One" Grid.Column="0" Grid.Row="0" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="One_Click" IsEnabledChanged="One_IsEnabledChanged">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="20"
-                                Background="{TemplateBinding Background}">
 
-                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsEnabled" Value="False">
-                                            <Setter Property="Background" Value="#FFF4F4F4"/>
-                                            <Setter Property="BorderBrush" Value="#FFADB2B5"/>
-                                            <Setter Property="Foreground" Value="#FF838383"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button x:Name="Four" Grid.Column="0" Grid.Row="1" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Four_Click"/>
-            <Button x:Name="Seven" Grid.Column="0" Grid.Row="2" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Seven_Click"/>
-            <Button x:Name="Two" Grid.Column="1" Grid.Row="0" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Two_Click"/>
-            <Button x:Name="Five" Grid.Column="1" Grid.Row="1" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Five_Click"/>
-            <Button x:Name="Eight" Grid.Column="1" Grid.Row="2" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Eight_Click"/>
-            <Button x:Name="Three" Grid.Column="2" Grid.Row="0" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Three_Click"/>
-            <Button x:Name="Six" Grid.Column="2" Grid.Row="1" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Six_Click"/>
-            <Button x:Name="Nine" Grid.Column="2" Grid.Row="2" Background="#00000000" Margin="10, 10" BorderThickness="0" Click="Nine_Click"/>
+            <Button x:Name="One" Grid.Column="0" Grid.Row="0"  Click="One_Click" Template="{StaticResource ButtonTemplate}" />
+            <Button x:Name="Four" Grid.Column="0" Grid.Row="1" Click="Four_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Seven" Grid.Column="0" Grid.Row="2" Click="Seven_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Two" Grid.Column="1" Grid.Row="0" Click="Two_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Five" Grid.Column="1" Grid.Row="1" Click="Five_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Eight" Grid.Column="1" Grid.Row="2" Click="Eight_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Three" Grid.Column="2" Grid.Row="0"  Click="Three_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Six" Grid.Column="2" Grid.Row="1" Click="Six_Click" Template="{StaticResource ButtonTemplate}"/>
+            <Button x:Name="Nine" Grid.Column="2" Grid.Row="2" Click="Nine_Click" Template="{StaticResource ButtonTemplate}"/>
 
             <Image Grid.Column="0" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
             <Image Grid.Column="1" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
@@ -89,7 +98,6 @@
 
             <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="/Image/line_right_left.png" Stretch="Fill" Visibility="Collapsed"/>
             <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="/Image/line_left_right.png" Stretch="Fill" Visibility="Collapsed"/>
-
 
         </Grid>
         

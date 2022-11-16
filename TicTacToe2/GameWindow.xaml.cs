@@ -28,21 +28,15 @@ namespace TicTacToe2
         {
             if (One.Content == null)
             {
-                One.Content = Resources["Image.First"];
                 One.IsEnabled = false;
-            }
+            }          
         }
-        private void One_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            One.Background = Brushes.Transparent;
-        }
-
         private void Two_Click(object sender, RoutedEventArgs e)
         {
-            if (Two.Content == null)
+            if (Two.IsEnabled == true)
             {
-                Two.Content = Resources["Image.First"];
                 Two.IsEnabled = false;
+                Two.Background = Brushes.Red;
             }
         }
 
@@ -50,40 +44,56 @@ namespace TicTacToe2
         {
             if (Three.Content == null)
             {
-                Three.Content = Resources["Image.First"];
                 Three.IsEnabled = false;
-
             }
         }
 
         private void Four_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Four.Content == null)
+            {
+                Four.IsEnabled = false;
+            }
         }
 
         private void Five_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Five.Content == null)
+            {
+                Five.IsEnabled = false;
+            }
         }
 
         private void Six_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Six.Content == null)
+            {
+                Six.IsEnabled = false;
+            }
         }
 
         private void Seven_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Seven.Content == null)
+            {
+                Seven.IsEnabled = false;
+            }
         }
 
         private void Eight_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Eight.Content == null)
+            {
+                Eight.IsEnabled = false;
+            }
         }
 
         private void Nine_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Nine.Content == null)
+            {
+                Nine.IsEnabled = false;
+            }
         }
 
     }

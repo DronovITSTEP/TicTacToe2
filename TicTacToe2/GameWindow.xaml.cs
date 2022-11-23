@@ -25,12 +25,21 @@ namespace TicTacToe2
             "Image/krest.png",
             "Image/nol.png"
         };
-        int r;
+        readonly int r;
+
+        List<Button> buttons;
+
+        LogicGame? logic;
+
     public GameWindow()
         {
             InitializeComponent();
             r = new Random().Next(2);
 
+            buttons = new List<Button>
+            {
+                One , Two, Three, Four, Five, Six, Seven, Eight, Nine
+            };
         }
 
         private Image SetImage()
@@ -45,6 +54,13 @@ namespace TicTacToe2
             Button button= (Button)sender;
             button.IsEnabled = false;
             button.Content = SetImage();
+            logic = new LogicGame(lists, r, buttons, buttons.IndexOf(button));
+            if (logic.Move())
+            {
+                new MainWindow().Show();
+                Close();
+            }
+
         }
     }
 }

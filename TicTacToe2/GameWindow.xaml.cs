@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,82 +20,31 @@ namespace TicTacToe2
     /// </summary>
     public partial class GameWindow : Window
     {
-        public GameWindow()
+        List<string> lists= new List<string>
+        {
+            "Image/krest.png",
+            "Image/nol.png"
+        };
+        int r;
+    public GameWindow()
         {
             InitializeComponent();
+            r = new Random().Next(2);
+
         }
 
-        private void One_Click(object sender, RoutedEventArgs e)
+        private Image SetImage()
         {
-            if (One.Content == null)
-            {
-                One.IsEnabled = false;
-            }          
-        }
-        private void Two_Click(object sender, RoutedEventArgs e)
-        {
-            if (Two.IsEnabled == true)
-            {
-                Two.IsEnabled = false;
-                Two.Background = Brushes.Red;
-            }
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(lists[r], UriKind.Relative));
+            return img;
         }
 
-        private void Three_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Three.Content == null)
-            {
-                Three.IsEnabled = false;
-            }
+            Button button= (Button)sender;
+            button.IsEnabled = false;
+            button.Content = SetImage();
         }
-
-        private void Four_Click(object sender, RoutedEventArgs e)
-        {
-            if (Four.Content == null)
-            {
-                Four.IsEnabled = false;
-            }
-        }
-
-        private void Five_Click(object sender, RoutedEventArgs e)
-        {
-            if (Five.Content == null)
-            {
-                Five.IsEnabled = false;
-            }
-        }
-
-        private void Six_Click(object sender, RoutedEventArgs e)
-        {
-            if (Six.Content == null)
-            {
-                Six.IsEnabled = false;
-            }
-        }
-
-        private void Seven_Click(object sender, RoutedEventArgs e)
-        {
-            if (Seven.Content == null)
-            {
-                Seven.IsEnabled = false;
-            }
-        }
-
-        private void Eight_Click(object sender, RoutedEventArgs e)
-        {
-            if (Eight.Content == null)
-            {
-                Eight.IsEnabled = false;
-            }
-        }
-
-        private void Nine_Click(object sender, RoutedEventArgs e)
-        {
-            if (Nine.Content == null)
-            {
-                Nine.IsEnabled = false;
-            }
-        }
-
     }
 }

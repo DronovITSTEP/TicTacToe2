@@ -31,8 +31,7 @@ namespace TicTacToe2
         }
         private void NewGame_Click_1(object sender, RoutedEventArgs e)
         {
-            GameWindow gameWindow = new GameWindow();
-            gameWindow.Show();
+            new GameWindow().Show();
             Close();
         }
     }

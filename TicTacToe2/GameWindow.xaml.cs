@@ -31,7 +31,9 @@ namespace TicTacToe2
 
         LogicGame? logic;
 
-    public GameWindow()
+        List<Image> lines;
+
+        public GameWindow()
         {
             InitializeComponent();
             r = new Random().Next(2);
@@ -39,6 +41,11 @@ namespace TicTacToe2
             buttons = new List<Button>
             {
                 One , Two, Three, Four, Five, Six, Seven, Eight, Nine
+            };
+
+            lines = new List<Image>
+            {
+                FirstVert, SecondVert, ThirdVert, FirstHor, SecondHor, ThirdHor,  LeftRight, RightLeft
             };
         }
 
@@ -55,8 +62,11 @@ namespace TicTacToe2
             button.IsEnabled = false;
             button.Content = SetImage();
             logic = new LogicGame(lists, r, buttons, buttons.IndexOf(button));
-            if (logic.Move())
+            int i = logic.Move();
+            if (i != -1)
             {
+                lines[i].Visibility= Visibility.Visible;
+                MessageBox.Show("jh");
                 new MainWindow().Show();
                 Close();
             }

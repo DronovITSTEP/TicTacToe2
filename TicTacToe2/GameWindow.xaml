@@ -91,16 +91,16 @@
             <Button Template="{DynamicResource ButtonTemplate}" x:Name="Six" Grid.Column="2" Grid.Row="1" />
             <Button Template="{DynamicResource ButtonTemplate}" x:Name="Nine" Grid.Column="2" Grid.Row="2"/>
 
-            <Image Grid.Column="0" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
-            <Image Grid.Column="1" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
-            <Image Grid.Column="2" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="FirstVert" Grid.Column="0" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="SecondVert" Grid.Column="1" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="ThirdVert" Grid.Column="2" Grid.Row="0" Source="/Image/line_vertical.png" Grid.RowSpan="3" Stretch="Fill" Visibility="Collapsed"/>
 
-            <Image Grid.Column="0" Grid.Row="0" Source="/Image/line_horizontal.png" Grid.ColumnSpan="3" Stretch="Fill" Visibility="Collapsed"/>
-            <Image Grid.Column="0" Grid.Row="1" Source="/Image/line_horizontal.png" Grid.ColumnSpan="3" Stretch="Fill" Visibility="Collapsed"/>
-            <Image Grid.Column="0" Grid.Row="2" Source="/Image/line_horizontal.png" Grid.ColumnSpan="3" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="FirstHor" Grid.Column="0" Grid.Row="0" Source="/Image/line_horizontal.png" Grid.ColumnSpan="3" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="SecondHor" Grid.Column="0" Grid.Row="1" Source="/Image/line_horizontal.png" Grid.ColumnSpan="3" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="ThirdHor" Grid.Column="0" Grid.Row="2" Source="/Image/line_horizontal.png" Grid.ColumnSpan="3" Stretch="Fill" Visibility="Collapsed"/>
 
-            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="/Image/line_right_left.png" Stretch="Fill" Visibility="Collapsed"/>
-            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="/Image/line_left_right.png" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="RightLeft" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="/Image/line_right_left.png" Stretch="Fill" Visibility="Collapsed"/>
+            <Image x:Name="LeftRight" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="/Image/line_left_right.png" Stretch="Fill" Visibility="Collapsed"/>
 
         </Grid>
         

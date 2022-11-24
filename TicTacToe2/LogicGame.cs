@@ -16,7 +16,9 @@ namespace TicTacToe2
         Random random;
         List<Button> buttons;
         static List<int> lists = new List<int> {3,3,3,3,3,3,3,3,3 };
+
         public LogicGame(List<string> l, int r, List<Button> buttons, int index) {
+          
             random = new Random();
             lists[index] = 0;
             if (r == 1)
@@ -30,9 +32,10 @@ namespace TicTacToe2
 
         }
 
-        public bool Move()
+        public int Move()
         {
-            if (!Win())
+            int w = Win();
+            if (w == -1)
             {
                 int i;
                 while (true)
@@ -43,44 +46,52 @@ namespace TicTacToe2
                         buttons[i].IsEnabled = false;
                         buttons[i].Content = image;
                         lists[i] = 1;
-                        if (Win()) return true;
+                        if ((w = Win()) != -1) return w;
                         break;
                     }
                 }
             }
-            else return true;
-            return false;
+            else return w;
+            return -1;
         }
 
-        public bool Win() 
+        private int Win() 
         {
             for (int i = 0; i <= 6; i += 3)
             {
                 if (lists[i] == lists[i + 1] && lists[i] == lists[i + 2] && lists[i] != 3)
-                {
-                    MessageBox.Show("winner!");
-                    return true;
+                {                   
+                    RestartList();
+                    return (i == 0)?3:((i == 3)?4:5);
                 }
             }
             for (int i = 0; i < 3; i++)
             {
                 if (lists[i] == lists[i + 3] && lists[i] == lists[i + 6] && lists[i] != 3)
                 {
-                    MessageBox.Show("winner!");
-                    return true;
+                    RestartList();
+                    return i;
                 }
             }
             if (lists[0] == lists[4] && lists[0] == lists[8] && lists[0] != 3)
             {
-                MessageBox.Show("winner!");
-                return true;
+                RestartList();
+                return 7;
             }
             if (lists[2] == lists[4] && lists[2] == lists[6] && lists[2] != 3)
             {
-                MessageBox.Show("winner!");
-                return true;
+                RestartList();
+                return 6;
             }
-            return false;
+            return -1;
+        }
+
+        private void RestartList()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                lists[i] = 3;
+            }
         }
     }
 }
